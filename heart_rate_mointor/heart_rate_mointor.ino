@@ -33,6 +33,13 @@ void setup()
  
 void loop()
 {
+    // Sending data
+    float dataRead = analogRead(A0);
+    dataRead = (dataRead/2024.0) * 0.5;
+//    String dataToSend = String(dataRead);
+    Serial.println(dataRead);
+    delay(300);
+    
     // Make sure to call update as fast as possible
     pox.update();
     if (millis() - tsLastReport > REPORTING_PERIOD_MS) {
