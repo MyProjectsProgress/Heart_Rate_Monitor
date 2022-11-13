@@ -81,15 +81,11 @@ tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
 
 
 
-
-
 with tab1:
 
-            okokok = threading.Timer(0.5, test())
-            okokok.start()
-                
-
-
+    okokok = threading.Timer(0.5, test())
+    okokok.start()
+        
 
 
 with tab2:

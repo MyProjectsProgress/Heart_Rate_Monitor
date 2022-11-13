@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 import threading
 
 graph_placeholder = st.empty()
-flag = True
+
 
 flag = True
 def test():
@@ -25,37 +25,37 @@ def test():
     y_axis = list()
 
     try:
-            serial_object = serial.Serial('com3' , 9600)
-            serial_object.close()
-            serial_object.open()
+        serial_object = serial.Serial('com3' , 9600)
+        serial_object.close()
+        serial_object.open()
     except:
-            pass    
+        pass    
         
             
     while flag:
         try:
-                        serial_object.flushInput()
-                        serial_object.flushOutput()
-                        serial_object.flush()
-                        data = serial_object.readline()
-                        print(data.decode())
-                        ## concatenating the value of x and y to the list
-                        x_axis.append(counter)
-                        y_axis.append(data.decode())
+            serial_object.flushInput()
+            serial_object.flushOutput()
+            serial_object.flush()
+            data = serial_object.readline()
+            print(data.decode())
+            ## concatenating the value of x and y to the list
+            x_axis.append(counter)
+            y_axis.append(data.decode())
 
-                        counter += 1
-                        plotting(x_axis,y_axis,graph_placeholder)
-                        # if counter == 5:
-                        #     graph_placeholder.empty()
-                        #     break
-                        checbox = st.sidebar.checkbox("test")
-                        if checbox:
-                            radio1 = "Drama"
-                        st.write(radio1)
-                        st.write(counter)
-                        
+            counter += 1
+            plotting(x_axis,y_axis,graph_placeholder)
+            # if counter == 5:
+            #     graph_placeholder.empty()
+            #     break
+            checbox = st.sidebar.checkbox("test")
+            if checbox:
+                radio1 = "Drama"
+            st.write(radio1)
+            st.write(counter)
+            
         except:
-                        pass
+            pass
 
                     
         plt.pause(0.0001)
