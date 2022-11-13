@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import threading
-
+x=[]
 graph_placeholder = st.empty()
 class setInterval():
     def _init_(self, func, sec):
@@ -17,7 +17,11 @@ class setInterval():
 
     def cancel(self):
         self.t.cancel()
-   
+
+
+
+st.write("helloo")
+
 def test ():
         def plotting(x,y,placeholder):
        
@@ -43,10 +47,16 @@ def test ():
             
 
         try:
+
                     serial_object.flushInput()
                     serial_object.flushOutput()
                     serial_object.flush()
                     data = serial_object.readline()
+                    counter+=1
+                   
+                    x.append(data.decode())
+                    if (counter%5==0):
+                        getx()
                     print(data.decode())
                     ## concatenating the value of x and y to the list
                     x_axis.append(counter)
@@ -68,6 +78,9 @@ def test ():
 
                 
         plt.pause(0.0001)
+
+def getx():
+    return x
 
 
 with st.sidebar:

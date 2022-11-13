@@ -2,21 +2,25 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import statistics
+import main2 
 
 # Set random seed
 np.random.seed(42)
 
+x=main2.getx()
+x=x[-5: ]
+
 # Create dummy data
-x = np.array([list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=17, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5))])
+# x = np.array([list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=17, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5))])
 
 # Define list variable for groups means
 x_bar = []
