@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import statistics
 import main2 
+import streamlit as st
 
 # Set random seed
 np.random.seed(42)
@@ -54,6 +55,8 @@ axs[1].axhline((statistics.mean(r)), color='blue')
 axs[1].set_ylim(bottom=0)
 axs[1].set_title('R Chart')
 axs[1].set(xlabel='Group', ylabel='Range')
+
+st.plotly(fig)
 
 # Validate points out of control limits for x-bar chart
 i = 0
