@@ -14,7 +14,6 @@ x_m = []
 np.random.seed(42)
 x_m = x_m[-5: ]
 
-
 # Create dummy data
 x = np.array([list(np.random.normal(loc=10, scale=2, size=5)),
               list(np.random.normal(loc=10, scale=2, size=5)),
@@ -93,7 +92,7 @@ def load_view():
 
     graph_placeholder = st.empty()
     
-    def plot_2(x,y,placeholder):
+    def plot(x, y, placeholder):
         fig, axs = plt.subplots()
         fig.set_size_inches(6,3)
         axs.plot(x,y)
@@ -109,9 +108,10 @@ def load_view():
         serial_object.close()
         serial_object.open()
     except:
-        st.write("NO Problem")    
+        st.write("NO Problem")   
+        
     flag = True
-    i=0
+    i = 0
 
     while flag:
         try:
@@ -127,10 +127,12 @@ def load_view():
             # if (counter%5==0):
             #     getx()
             if(len(x_axis) < 20):
-                plot_2(x_axis,y_axis,graph_placeholder)
+                plot(x_axis,y_axis,graph_placeholder)
             else:
-                plot_2(x_axis[i:],y_axis[i:],graph_placeholder)
+                plot(x_axis[i:],y_axis[i:],graph_placeholder)
                 i+=1
         except:
             pass
         plt.pause(0.0001)
+
+# load_view()

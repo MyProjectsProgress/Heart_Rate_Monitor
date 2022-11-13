@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas    as pd
 import altair    as alt
+import matplotlib.pyplot as plt
 
 class variables:
     start      = 0
@@ -10,8 +11,7 @@ start_btn  = st.sidebar.button(label='Start' )
 pause_btn  = st.sidebar.button(label='Pause' )
 resume_btn = st.sidebar.button(label='resume')
 
-uploaded_file = st.sidebar.file_uploader(label="", type = ['csv'])
-df = pd.read_csv(uploaded_file)
+df = pd.read_csv('../files/ECG_Dataset.csv')
 
 signal_x_axis = (df.iloc[:,0]).to_numpy() # dataframe x axis
 signal_y_axis = (df.iloc[:,1]).to_numpy() # dataframe y axis
@@ -55,5 +55,13 @@ def Dynamic_graph(signal_x_axis, signal_y_axis,start_btn,pause_btn,resume_btn):
         step_df   = df.iloc[0:variables.graph_size]
         lines     = plot_animation      (step_df)
         line_plot = line_plot.altair_chart(lines)
+
+def plot(x, y):
+        fig, axs = plt.subplots()
+        fig.set_size_inches(6,3)
+        axs.plot(x,y)
+        st.pyplot(fig)
+
+plot(signal_x_axis,signal_y_axis)
 
 Dynamic_graph(signal_x_axis, signal_y_axis, start_btn, pause_btn, resume_btn)
