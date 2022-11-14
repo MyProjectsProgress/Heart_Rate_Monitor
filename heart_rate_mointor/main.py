@@ -14,17 +14,52 @@ x_m = []
 np.random.seed(42)
 x_m = x_m[-5: ]
 
+def read():
+    x=[[]]
+    x.pop()
+    try:
+        serial_object = serial.Serial('COM23' , 9600)
+        serial_object.close()
+        serial_object.open()
+    except:
+        st.write("NO Problem")    
+    
+    flag = True
+    i=0
+    j=0
+
+    for j in range (20) :
+        nestedNp = []
+        for i in range (5):
+            try:
+                serial_object.flushInput()
+                serial_object.flushOutput()
+                serial_object.flush()
+                data = serial_object.readline()
+                print(data.decode())
+                nestedNp.append(float(data.decode()))
+                
+            except:
+                    pass
+        x.append(nestedNp)
+        i=0
+        print(x)
+    return np.array(x)
+
+
 # Create dummy data
-x = np.array([list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=17, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5)),
-              list(np.random.normal(loc=10, scale=2, size=5))])
+# x = np.array([list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=17, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5)),
+#               list(np.random.normal(loc=10, scale=2, size=5))])
+
+x = read()
 
 # Define list variable for groups means
 mean_list = []
@@ -104,7 +139,7 @@ def load_view():
     y_axis = list()
 
     try:
-        serial_object = serial.Serial('COM21' , 9600)
+        serial_object = serial.Serial('COM23' , 9600)
         serial_object.close()
         serial_object.open()
     except:
@@ -135,4 +170,4 @@ def load_view():
             pass
         plt.pause(0.0001)
 
-# load_view()
+load_view()
