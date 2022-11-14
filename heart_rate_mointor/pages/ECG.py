@@ -21,6 +21,7 @@ if uploaded_file is not None:
     def plot_animation(df):
         brush  = alt.selection_interval ()
         chart1 = alt.Chart(df).mark_line().encode(x=alt.X('time', axis=alt.Axis(title='Time')),).properties(width=800, height=500).add_selection(brush).interactive()
+        
         figure = chart1.encode(y=alt.Y('amplitude',axis=alt.Axis(title='Amplitude')))
         return figure
 
