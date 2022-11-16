@@ -1,12 +1,8 @@
 import streamlit as st
 import serial
 import matplotlib.pyplot as plt
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
-import altair as alt
-import numpy as np
-import statistics
 
+st.title('Singal Monitor')
 
 plt.ion()
 figureGlobal = plt.figure()
@@ -32,7 +28,7 @@ def load_view():
         serial_object.close()
         serial_object.open()
     except:
-        st.write("NO Problem")   
+        st.header("Connect Your Arduino to The Right Port")   
         
     flag = True
     i = 0
