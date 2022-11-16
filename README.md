@@ -1,4 +1,4 @@
-# Heart_Rate_Monitor
+# Heart Rate Monitor
 
 ## Description
 
