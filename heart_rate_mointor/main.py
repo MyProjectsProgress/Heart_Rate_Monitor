@@ -16,7 +16,6 @@ def load_view():
         fig.set_size_inches(6,3)
         axs.plot(x,y)
         placeholder.write(fig)
-
         
     ## Initializing the variables
     counter = 0
@@ -40,7 +39,6 @@ def load_view():
             serial_object.flush()
             data = serial_object.readline()
             print(data.decode())
-            ## concatenating the value of x and y to the list
             x_axis.append(counter)
             y_axis.append(float(data.decode()))
             counter += 1
@@ -55,4 +53,4 @@ def load_view():
             pass
         plt.pause(0.0001)
 
-load_view() # done
+load_view()

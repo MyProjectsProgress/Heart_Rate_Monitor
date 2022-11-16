@@ -4,16 +4,18 @@ import altair    as alt
 import matplotlib.pyplot as plt
 import numpy as np
 import statistics
-from matplotlib import animation
 import time
+
+st.title('Singal Monitor')
 
 class variables:
     start      = 0
     graph_size = 10
 
-start_btn  = st.sidebar.button(label='Show Graph Dynamically')
-
 uploaded_file = st.sidebar.file_uploader(label='')
+
+if uploaded_file is not None:
+    start_btn  = st.sidebar.button(label='Show Graph Dynamically')
 
 placeholder = st.empty()
 
@@ -36,8 +38,6 @@ if uploaded_file is not None:
 
     samples = signal_y_axis[:16500]
     dataSize = len(samples)
-    
-   
 
     groups = (np.split(samples,dataSize//10))
 
@@ -45,13 +45,6 @@ if uploaded_file is not None:
         mean_list.append(group.mean())
         ranges_list.append(group.max() - group.min())
 
-    # x_axis = np.arange(0,220,1)
-
-    # Plot x-bar and ranges_list charts
-    
-
-    # x-bar chart
-    # axs[0].plot(mean_list, linestyle='-', marker='o', color='black')
     A2 = 0.31
     D3 = 0.22
     D4 = 1.78
@@ -64,7 +57,6 @@ if uploaded_file is not None:
     axs[0].set(xlabel='Group', ylabel='Mean')
 
     # ranges_list chart
-    # axs[1].plot(ranges_list, linestyle='-', marker='o', color='black')
     axs[1].axhline((D4*statistics.mean(ranges_list)), color='red', linestyle='dashed')
     axs[1].axhline((D3*statistics.mean(ranges_list)), color='red', linestyle='dashed')
     axs[1].axhline((statistics.mean(ranges_list)), color='blue')
@@ -75,35 +67,32 @@ if uploaded_file is not None:
     for i in range(len(signal_x_axis)):
         plot(mean_list[:i],ranges_list[:i],placeholder)
         if mean_list[i] > statistics.mean(mean_list)+A2*statistics.mean(ranges_list) or mean_list[i] < statistics.mean(mean_list)-A2*statistics.mean(ranges_list):
-            st.write('Group', i, 'out of mean control limits!')
+            st.sidebar.write('Group', i, 'out of mean control limits!')
         if ranges_list[i] > D4*statistics.mean(ranges_list) or ranges_list[i] < D3*statistics.mean(ranges_list):
-            st.write('Group', i, 'out of range cotrol limits!')
+            st.sidebar.write('Group', i, 'out of range cotrol limits!')
         time.sleep(0.2)
-        
-
-    # st.pyplot(fig)
 
     # Validate points out of control limits for x-bar chart
     i = 0
     control = True
     for group in mean_list:
         if group > statistics.mean(mean_list)+A2*statistics.mean(ranges_list) or group < statistics.mean(mean_list)-A2*statistics.mean(ranges_list):
-            st.write('Group', i, 'out of mean control limits!')
+            st.sidebar.write('Group', i, 'out of mean control limits!')
             control = False
         i += 1
     if control == True:
-        st.write('All points within control limits.')
+        st.sidebar.write('All points within control limits.')
 
     # Validate points out of control limits for ranges_list chart
     i = 0
     control = True
     for group in ranges_list:
         if group > D4*statistics.mean(ranges_list):
-            st.write('Group', i, 'out of range cotrol limits!')
+            st.sidebar.write('Group', i, 'out of range cotrol limits!')
             control = False
         i += 1
     if control == True:
-        st.write('All points within control limits.')
+        st.sidebar.write('All points within control limits.')
 
     # -------------------------------------- Plot Dynamic ----------------------------------------------------
     def plot_animation(df):
@@ -154,4 +143,6 @@ if uploaded_file is not None:
                 size                 = i * burst 
 
     Dynamic_graph(signal_x_axis, signal_y_axis, start_btn)
-    # Dynamic_x_bar(x_axis,mean_list,start_btn)
+
+else:
+    st.header("Upload Your EMG File to Monitor It")

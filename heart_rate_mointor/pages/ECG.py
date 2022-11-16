@@ -1,16 +1,17 @@
 import streamlit as st
 import pandas    as pd
 import altair    as alt
-import matplotlib.pyplot as plt
 
-# done
+st.title('Singal Monitor')
+
 class variables:
     start      = 0
     graph_size = 10
 
-start_btn  = st.sidebar.button(label='Show Graph Dynamically')
-
 uploaded_file = st.sidebar.file_uploader(label='')
+
+if uploaded_file is not None:
+    start_btn  = st.sidebar.button(label='Show Graph Dynamically')
 
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
@@ -47,3 +48,6 @@ if uploaded_file is not None:
                 size                 = i * burst 
 
     Dynamic_graph(signal_x_axis, signal_y_axis, start_btn)
+
+else:
+    st.header("Upload Your ECG File to Monitor It")
