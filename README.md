@@ -38,7 +38,7 @@ A web application that monitors the heart rate of the human by a heart rate sens
 | Name                           | Section | BN   |
 | ------------------------------ | ------- | ---- |
 | Ahmed Emad El deen Ahmed Kwaiz | 1       | 6    |
-| Marina Nasser Fayez Zaky       | null    | null |
+| Marina Nasser Fayez Zaky       | 2       | 12 |
 | Magdy Mohammed El Sayed Nasr   | 2       | 15   |
 | Mayar                          | null    | null |
 | Amira                          | null    | null |
