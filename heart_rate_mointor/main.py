@@ -59,4 +59,4 @@ def load_view():
             pass
         plt.pause(0.0001)
 
-load_view()
+load_view() # done

@@ -3,6 +3,7 @@ import pandas    as pd
 import altair    as alt
 import matplotlib.pyplot as plt
 
+# done
 class variables:
     start      = 0
     graph_size = 10
