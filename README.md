@@ -1,4 +1,4 @@
-# Heart_Rate_Monitor
+# Heart Rate Monitor
 
 ## Description
 
@@ -23,6 +23,7 @@ A web application that monitors the heart rate of the human by a heart rate sens
 
 - Python "Streamlit"
 - Arduino Uno
+- C
 
 ## Project Demo
 
