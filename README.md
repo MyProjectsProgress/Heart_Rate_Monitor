@@ -40,8 +40,8 @@ A web application that monitors the heart rate of the human by a heart rate sens
 | Ahmed Emad El deen Ahmed Kwaiz | 1       | 6    |
 | Marina Nasser Fayez Zaky       | 2       | 12   |
 | Magdy Mohammed El Sayed Nasr   | 2       | 15   |
-| Mayar                          | null    | null |
-| Amira                          | null    | null |
+| Mayar Ehab Mohamed             | 2       | 41   |
+| Amira Mohamed Abdelfattah      | 1       | 15   |
 | joe                            | null    | null |
 | Michael Hany Rofaeel           | 2       | 14   |
 
